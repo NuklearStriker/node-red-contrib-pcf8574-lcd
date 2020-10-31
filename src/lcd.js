@@ -26,9 +26,9 @@ module.exports = function(RED) {
     function LCDI2C(config) {
         RED.nodes.createNode(this, config);
         var node = this;
-        var addr = 0x0;
-        var numLines = 4;
-        var numCols = 20;
+        var addr = 0x27;
+        var numLines = 2;
+        var numCols = 16;
         switch (config.variant) {
             case "PCF8574":
                 addr = 0x27;
@@ -38,7 +38,11 @@ module.exports = function(RED) {
                 break;
         }
         switch (config.size) {
-            case "20x4":
+			case "16x02":
+				numLines = 2;
+				numCols = 16;
+				break;
+            case "20x04":
                 numLines = 4;
                 numCols = 20;
                 break;
@@ -107,6 +111,9 @@ module.exports = function(RED) {
                                     var x = 0;
                                     if (msg.payload[row].alignment !== undefined) {
                                         switch (msg.payload[row].alignment) {
+											case "left":
+												x = 0;
+												break;
                                             case "center":
                                                 x = (numCols - msg.payload[row].text.length) / 2;
                                                 break;
