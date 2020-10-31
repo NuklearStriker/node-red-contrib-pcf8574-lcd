@@ -1,17 +1,17 @@
 {
     "author": {
-        "name": "Edrean Ernst"
+        "name": "LECLERCQ Kevin"
     },
     "bugs": {
-        "url": "https://github.com/edreanernst/node-red-contrib-pcf8574-lcd/issues"
+        "url": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd/issues"
     },
     "name": "node-red-contrib-pcf8574-lcd",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Interface to PCF8574 I2C driver for LCD",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/edreanernst/node-red-contrib-pcf8574-lcd"
+        "url": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd"
     },
     "dependencies": {
         "i2c-bus": "*",
