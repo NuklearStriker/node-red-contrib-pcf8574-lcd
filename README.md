@@ -41,7 +41,7 @@ The node has the following properties :
 * Variant
   * PCF8574 or PCF8574AT. The default value is PCF8574. Care should be taken to correctly identify the I2C chip on your device. The different variants do not have the same I2C addresses and it will not work if the incorrect variant is chosen.
 * Size
-  * Only 20x4 is supported at this time. Support for other display sizes can be considered on request.
+  * 16x2 and 20x4 are compatible.
 * Name
   * The chosen name for the node.
 
