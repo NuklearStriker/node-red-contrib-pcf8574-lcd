@@ -29,6 +29,8 @@ class LCD {
     constructor(address) {
         this.i2c = require('i2c-bus').openSync(1);
         this.addr = address;
+	
+	this._init();
 		
         this.write4(0x30 << 4); //initialization: 1st try
         this._sleep(4500);
@@ -81,7 +83,7 @@ class LCD {
     /** write by 4bit */
     write4(data) {
         this.writei2c(data);
-        this._pulseEnable(data)
+        this._pulseEnable(data);
     }
 	
     /** write byte */
@@ -134,7 +136,7 @@ class LCD {
     /** set cursor to 0,0 */
     home() {
         return this.write(LCD.RETURNHOME, LCD.CMD);
-		this._sleep(2000);
+	//this._sleep(2000);
     }
 	
     /** Turn blink of cursor off */
