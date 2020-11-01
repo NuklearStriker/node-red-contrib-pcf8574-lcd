@@ -111,9 +111,9 @@ module.exports = function(RED) {
                                     var x = 0;
                                     if (msg.payload[row].alignment !== undefined) {
                                         switch (msg.payload[row].alignment) {
-											case "left":
-												x = 0;
-												break;
+					    case "left":
+						x = 0;
+						break;
                                             case "center":
                                                 x = (numCols - msg.payload[row].text.length) / 2;
                                                 break;
