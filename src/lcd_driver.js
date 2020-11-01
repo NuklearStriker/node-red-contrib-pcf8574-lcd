@@ -242,8 +242,8 @@ LCD._5x10DOTS = 0x04;
 LCD._5x8DOTS = 0x00;
 
 //# flags for backlight control
-LCD.BACKLIGHT 0x08;
-LCD.NOBACKLIGHT 0x00;
+LCD.BACKLIGHT = 0x08;
+LCD.NOBACKLIGHT = 0x00;
 
 //# LCD command
 LCD.Enable = 0x04; // Enable bit
