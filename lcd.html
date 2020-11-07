@@ -1,0 +1,115 @@
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2019 Edrean Ernst
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('LCD-I2C',{
+        category: 'output',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            variant: {value:"PCF8574"},
+            size: {value:"16x02"}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "lcd.png",
+        label: function() {
+            return this.name||"LCD-I2C";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="LCD-I2C">
+    <div class="form-row">
+        <label for="node-input-variant"><i class="fa fa-microchip"></i> Variant</label>
+        <select type="text" id="node-input-variant" style="width:120px;">
+            <option value="PCF8574">PCF8574</option>
+            <option value="PCF8574AT">PCF8574AT</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-size"><i class="fa fa-arrows"></i> Size</label>
+        <select type="text" id="node-input-size" style="width:80px;">
+            <option value="16x02">16x02</option>
+            <option value="20x4">20x04</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="LCD-I2C">
+    <p>This node interfaces to an LCD via I2C driven by the PCF8574 driver</p>
+    <h3>Inputs</h3>
+       <dl class="message-properties">
+            <dt>payload
+                    <span class="property-type">array</span>
+            </dt>
+            <dd>the payload to be delivered to the display.</dd>
+
+            <dt class="optional">action
+                <span class="property-type">string</span>
+            </dt>
+            <dd>the desired additional action to be performed.</dd>
+        </dl>
+    
+    <h3>Details</h3>
+       <p><code>msg.payload</code> is used to provide the payload of the text that should be displayed on the LCD display as well as how and where it 
+        should be displayed. It consists of an array of JSON objects, each object representing a line on the display. The first object represents the first line, the 
+        second represent the second line, and so on.</p>
+        
+       <p>Each object in the array can include any of the following keys :
+           <ul>
+               <li>"clear" - Set to <code>true</code> to clear the specific line before writing the text.</li>
+               <li>"text" - Set to a string that should be written to the specific line on the display.</li>
+               <li>"alignment" - Set to "center" for center alignment, or "right" for right alignment.</li>
+           </ul>
+        </p>
+
+        <p>As an example, if you want to display a text string on line 1 that is center aligned and also clear the line first, and also display a text string on line 4 that is right aligned without clearing the line :</p>
+<pre>"payload": [
+    {
+        "clear": true,
+        "text": "Line 1 Text",
+        "alignment": "center"
+    },
+    {},
+    {},
+    {
+        "clear": false,
+        "text": "Line 4 Text",
+        "alignment": "right"
+    }
+]</pre>
+        
+        <p>Certain actions can be performed by specifying them in <code>msg.action</code>. Actions are performed prior to any messages being written to the display. 
+            Available actions are:
+        <ul>
+            <li>"clearscreen" - To clear the entire screen.</li>
+            <li>"on" - Turn the display on.</li>
+            <li>"off" - Turn the display off.</li>
+        </ul></p>
+</script>
