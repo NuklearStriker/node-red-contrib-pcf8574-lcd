@@ -85,6 +85,10 @@ Accepted action strings are :
 * "clearscreen" - This will clear the whole LCD display
 * "on" - Turn the display on
 * "off" - Turn the display off
+* "blink_on" - turn the cursor blinking on
+* "blink_off" - turn the cursor blinking off
+* "cursor_on" - turn the cursor on
+* "cursor_off" - turn the cursor off
 
 ## Examples
 
