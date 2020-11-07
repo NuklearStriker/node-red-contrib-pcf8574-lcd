@@ -1,31 +1,34 @@
 {
-    "author": {
-        "name": "LECLERCQ Kevin"
-    },
-    "bugs": {
-        "url": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd/issues"
-    },
-    "name": "node-red-contrib-pcf8574-lcd",
-    "version": "0.2.0",
-    "description": "Interface to PCF8574 I2C driver for LCD",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd"
-    },
-    "dependencies": {
-        "i2c-bus": "*",
-        "sleep": "*"
-    },
-    "keywords": [
-        "node-red",
-        "PCF8574",
-        "LCD",
-        "I2C"
-    ],
-    "node-red": {
-        "nodes": {
-            "LCD-I2C": "src/lcd.js"
-        }
+  "name": "node-red-contrib-pcf8574-lcd",
+  "version": "1.0.0",
+  "description": "PCF8574 LCD on I2C driver",
+  "main": "lcd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd.git"
+  },
+  "dependencies": {
+    "i2c-bus": "*",
+    "sleep": "*"
+  },
+  "keywords": [
+    "PCF8574",
+    "LCD",
+    "I2C",
+    "IIC"
+  ],
+  "author": "LECLERCQ Kevin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd/issues"
+  },
+  "homepage": "https://github.com/NuklearStriker/node-red-contrib-pcf8574-lcd#readme",
+  "node-red": {
+    "nodes": {
+      "LCD-I2C": "lcd.js"
     }
+  }
 }
